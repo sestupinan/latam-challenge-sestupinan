@@ -1,9 +1,9 @@
 from typing import List, Tuple
 import json
+from memory_profiler import profile
 
+@profile
 def q3_time(file_path: str) -> List[Tuple[str, int]]:
-    
-    # Dictionary to store the count of each mentioned user
     mentioned_users_dict = {}
     with open(file_path) as f:
             for jsonObj in f:
@@ -31,3 +31,4 @@ def q3_time(file_path: str) -> List[Tuple[str, int]]:
     # Extracts the top 10 values
     mentioned_users_dict = mentioned_users_dict[:10]
     return mentioned_users_dict
+    
