@@ -1,13 +1,17 @@
 from typing import List, Tuple
 import re
 import json
+from memory_profiler import profile
+from collections import Counter
 
+
+@profile
 def q2_time(file_path: str) -> List[Tuple[str, int]]:
-    
+        
     # Regex pattern for emojis
     emoji_pattern = re.compile(r'[\U0001F300-\U0001F6FF\U0001F900-\U0001F9FF\u2600-\u26FF\u2700-\u27BF]', flags=re.UNICODE)
 
-    emojis_dict = {}
+    emojis_dict = Counter()
     with open(file_path) as f:
             for jsonObj in f:
                 tweetDict = json.loads(jsonObj)
@@ -23,8 +27,4 @@ def q2_time(file_path: str) -> List[Tuple[str, int]]:
 
 
     # Sorts the dictionary by values in descending order
-    emojis_dict = sorted(emojis_dict.items(), key=lambda x: x[1], reverse=True)
-
-    # Extracts the top 10 emojis
-    emojis_dict = emojis_dict[:10]
-    return emojis_dict
+    return emojis_dict.most_common(10)

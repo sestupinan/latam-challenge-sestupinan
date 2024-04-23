@@ -2,7 +2,10 @@ from typing import List, Tuple
 from datetime import datetime
 import pandas as pd
 
+from memory_profiler import profile
+
 # Function to calculate the username with most posts in each of the top 10 days with the most posts (optimizing time)
+@profile
 def q1_time(file_path: str) -> List[Tuple[datetime.date, str]]:
 
     # Data loading
