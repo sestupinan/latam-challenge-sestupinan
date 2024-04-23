@@ -25,5 +25,6 @@ def q2_time(file_path: str) -> List[Tuple[str, int]]:
                     else:
                         emojis_dict[emoji] = 1
 
+
     # Sorts the dictionary by values in descending order
-    emojis_dict.most_common(10)
+    return emojis_dict.most_common(10)
